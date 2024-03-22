@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Example application using htmx</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+</head>
+
+<body>
+
+<button hx-get="/rest/text" hx-swap="outerHTML">
+    Replace this button with text
+</button>
+
+<hr/>
+
+<button hx-get="/rest/list" hx-swap="beforeend" hx-target="#list">
+    Add new list item
+</button>
+<ul id="list">
+    <li>Initial list item</li>
+</ul>
+
+<hr/>
+
+<form hx-post="/rest/text" hx-swap="outerHTML">
+    <label for="name">Your Name:</label><input id="name" name="name" type="text"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<hr/>
+
+<p>Image loaded from resources directory:</p>
+<img src="images/java-duke.png" style="height: 150px;"/>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Example application using htmx websockets</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.11/dist/ext/ws.js"></script>
+</head>
+
+<body hx-ext="ws" ws-connect="/websocket/ws">
+
+<button hx-swap="outerHTML" id="replaceThis" ws-send>
+    Replace this button with text
+</button>
+
+<hr/>
+
+<button hx-swap="beforeend" id="replaceBelow" ws-send>
+    Replace this content below this button with text
+</button>
+<p id="toReplace">This can be replaced</p>
+
+<hr/>
+
+<p id="connectionTimestamp"/>
+
+</body>
+</html>
