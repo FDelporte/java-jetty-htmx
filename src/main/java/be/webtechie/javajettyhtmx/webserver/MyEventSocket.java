@@ -36,7 +36,9 @@ public class MyEventSocket {
     public void onWebSocketText(Session session, String message) {
         System.out.println("Received: " + message);
 
-        if (message.contains("replaceBelow")) {
+        if (message.startsWith("echo")) {
+            session.getAsyncRemote().sendText(message.replace("echo", "").trim());
+        } else if (message.contains("replaceBelow")) {
             session.getAsyncRemote().sendText("<p id=\"toReplace\">" + textService.getRandomParagraph(5) + "</li>");
         } else if (message.contains("replaceThis")) {
             session.getAsyncRemote().sendText("<p id=\"replaceThis\">" + textService.getRandomParagraph(10) + "</p>");

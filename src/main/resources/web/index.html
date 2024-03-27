@@ -4,15 +4,21 @@
     <meta charset="utf-8"/>
     <title>Example application using htmx</title>
     <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <link href="css/reset.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 
 <body>
 
+<h2>Below button will be replaced with a random text</h2>
+
 <button hx-get="/rest/text" hx-swap="outerHTML">
-    Replace this button with text
+    Request text
 </button>
 
 <hr/>
+
+<h2>Below button will request a new list item</h2>
 
 <button hx-get="/rest/list" hx-swap="beforeend" hx-target="#list">
     Add new list item
@@ -22,6 +28,8 @@
 </ul>
 
 <hr/>
+
+<h2>Form to send a name to the backend. Will be replaced by the answer from the server</h2>
 
 <form hx-post="/rest/text" hx-swap="outerHTML">
     <label for="name">Your Name:</label><input id="name" name="name" type="text"/>

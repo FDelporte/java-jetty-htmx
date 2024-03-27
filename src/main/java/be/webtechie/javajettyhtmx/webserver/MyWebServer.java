@@ -30,18 +30,15 @@ public class MyWebServer implements Runnable {
             ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
             server.setHandler(contextHandlerCollection);
 
-            System.out.println("Initializing the static file handler");
-            initStaticFileHandler(contextHandlerCollection);
-            System.out.println("Initializing the REST endpoints");
-            initRest(contextHandlerCollection);
-            System.out.println("Initializing the websocket");
-            initWebsocket(contextHandlerCollection);
+            addResourceHandler(contextHandlerCollection);
+            addRestHandler(contextHandlerCollection);
+            addWebSocketHandler(contextHandlerCollection);
         } catch (Exception e) {
             System.err.println("Problem initializing the Jetty server: " + e.getMessage());
         }
     }
 
-    private void initStaticFileHandler(ContextHandlerCollection contextHandlerCollection) throws Exception {
+    private void addResourceHandler(ContextHandlerCollection contextHandlerCollection) throws Exception {
         URL url = MyWebServer.class.getClassLoader().getResource("web");
 
         if (url == null) {
@@ -62,7 +59,7 @@ public class MyWebServer implements Runnable {
         contextHandlerCollection.addHandler(contactHandler);
     }
 
-    private void initRest(ContextHandlerCollection contextHandlerCollection) {
+    private void addRestHandler(ContextHandlerCollection contextHandlerCollection) {
         ServletContextHandler apiHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         apiHandler.setContextPath("/rest");
         contextHandlerCollection.addHandler(apiHandler);
@@ -70,7 +67,7 @@ public class MyWebServer implements Runnable {
         apiHandler.addServlet(TextService.class, "/text");
     }
 
-    private void initWebsocket(ContextHandlerCollection contextHandlerCollection) {
+    private void addWebSocketHandler(ContextHandlerCollection contextHandlerCollection) {
         ServletContextHandler webserviceContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         webserviceContextHandler.setContextPath("/websocket");
         contextHandlerCollection.addHandler(webserviceContextHandler);

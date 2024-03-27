@@ -5,22 +5,30 @@
     <title>Example application using htmx websockets</title>
     <script src="https://unpkg.com/htmx.org@1.9.11"></script>
     <script src="https://unpkg.com/htmx.org@1.9.11/dist/ext/ws.js"></script>
+    <link href="css/reset.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 
 <body hx-ext="ws" ws-connect="/websocket/ws">
 
+<h2>Below button will be replaced with a random text</h2>
+
 <button hx-swap="outerHTML" id="replaceThis" ws-send>
-    Replace this button with text
+    Request text
 </button>
 
 <hr/>
+
+<h2>Below button will replace the content in the paragraph below</h2>
 
 <button hx-swap="beforeend" id="replaceBelow" ws-send>
-    Replace this content below this button with text
+    Replace paragraph
 </button>
-<p id="toReplace">This can be replaced</p>
+<p id="toReplace">This will be replaced</p>
 
 <hr/>
+
+<h2>Below timestamp is pushed from the server</h2>
 
 <p id="connectionTimestamp"/>
 
