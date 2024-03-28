@@ -55,4 +55,4 @@ so you can build modern user interfaces with the simplicity and power of hyperte
 ### From JAR
 
 * Build the application with `mvn package`.
-* Start it with `java -jar jetty-htmx-demo.jar`
+* Start it with `java -jar target/jetty-htmx-demo.jar`
