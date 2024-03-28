@@ -13,6 +13,8 @@ Full information is available here:
 * [Blog post on webtechie.be](https://webtechie.be/post/2024-03-28-java-jetty-htmx-websocket-example/)
 * [YouTube video with code-walk-through](https://www.youtube.com/watch?v=ko-tIacI-u8)
 
+[![Example Java Application with Embedded Jetty and a htmx website](http://img.youtube.com/vi/ko-tIacI-u8/0.jpg)](http://www.youtube.com/watch?v=ko-tIacI-u8 "Example Java Application with Embedded Jetty and a htmx website")
+
 ## Technical Info
 
 ### Jetty
